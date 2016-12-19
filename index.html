@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="css/style.css" rel="styleshet" type="text/css">
+
+  <title>学习Vue</title>
+</head>
+<body>
+  <div id="app">
+    {{message}}
+  </div>
+  <div id="app-2">
+    <span v-bind:title="message">
+      刚开始学习Vue一步一步的学习
+    </span>
+  </div>
+  <div id="app-3">
+    <p v-if="seen">看不看得到我</p>
+  </div>
+  <div id="app-4">
+    <p v-if="seen">看不看得到我</p>
+  </div>
+</body>
+<script src="js/vue.js"></script>
+<script src="js/main.js"></script>
+</html>
