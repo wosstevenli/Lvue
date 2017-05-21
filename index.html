@@ -14,14 +14,19 @@
   </div>
   <div id="app-2">
     <span v-bind:title="message">
-      刚开始学习Vue一步一步的学习
+      v-bind:title的意思是鼠标停留几秒后显示app-2的信息
+      v-bind 属性被称为指令。指令带有前缀 v-，以表示它们是 Vue 提供的特殊属性。可能你已经猜到了，它们会在渲染的 DOM 上应用特殊的响应式行为。简言之，这里该指令的作用是：“将这个元素节点的 title 属性和 Vue 实例的 message 属性保持一致
+      看看到底是不是响应式的
+      JavaScript 控制台输入 app2.message = '新消息'，就会再一次看到这个绑定了 title 属性的 HTML 已经进行了更新
     </span>
   </div>
   <div id="app-3">
-    <p v-if="seen">看不看得到我</p>
+    <p v-if="seen">看不看得到我
+      控制台输入app3.seen = false调整app-3位隐藏
+    </p>
   </div>
   <div id="app-4">
-    <p v-if="seen">看不看得到我</p>
+    <p v-if="seen">到底看不看得到我</p>
   </div>
 </body>
 <script src="js/vue.js"></script>
