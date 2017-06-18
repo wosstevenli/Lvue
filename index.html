@@ -1,70 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="css/style.css" rel="styleshet" type="text/css">
-  <title>学习Vue</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="css/style.css" rel="styleshet" type="text/css">
+    <title>学习Vue</title>
 </head>
+
 <body>
 
-  <div id="app">
-    {{message}}
-  </div>
+    <div id="app">
+        {{message}}
+    </div>
 
-  <div id="app-2">
-    <span v-bind:title="message">
+    <div id="app-2">
+        <span v-bind:title="message">
       v-bind:title的意思是鼠标停留几秒后显示app-2的信息
       v-bind 属性被称为指令。指令带有前缀 v-，以表示它们是 Vue 提供的特殊属性。可能你已经猜到了，它们会在渲染的 DOM 上应用特殊的响应式行为。简言之，这里该指令的作用是：“将这个元素节点的 title 属性和 Vue 实例的 message 属性保持一致
       看看到底是不是响应式的
       JavaScript 控制台输入 app2.message = '新消息'，就会再一次看到这个绑定了 title 属性的 HTML 已经进行了更新
     </span>
-  </div>
+    </div>
 
-  <div id="app-3">
-    <p v-if="seen">看不看得到我
-      控制台输入app3.seen = false调整app-3位隐藏
+    <div id="app-3">
+        <p v-if="seen">看不看得到我 控制台输入app3.seen = false调整app-3位隐藏
+        </p>
+    </div>
+
+    <div id="app-4">
+        <p v-if="seen">到底看不看得到我</p>
+    </div>
+
+    <div id="app-5">
+        <ol>
+            <li v-for="todo in todos">
+                {{ todo.text }}
+            </li>
+            <li>app5.todos.push({text:'2017xin'})往列表中添加一个新的项</li>
+        </ol>
+    </div>
+
+    <!--处理用户输入-->
+    <div id="app-6">
+        <p>{{message}}</p>
+        <p>Vue 还提供了 v-model 指令，它能轻松实现表单输入和应用状态之间的双向绑定。</p>
+        <button v-on:click="reversemessage">逆向消息</button>
+    </div>
+
+    <!--双向数据绑定-->
+    <div id="app-7">
+        <p>{{message}}</p>
+        <input v-model="message">
+    </div>
+
+    <div id="app-9">
+        <eat-something></eat-something>
+    </div>
+
+    <!--组件化-->
+    <p>Vue里，一个组件本质上是一个拥有预定义选项的一个Vue实例</p>
+    <div id="app-8">
+        <ol>
+            <!-- 现在我们为每个todo-item提供待办项对象待办项对象是变量，即其内容可以是动态的 -->
+            <!--<todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>-->
+            <todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
+        </ol>
+    </div>
+
+    <!--组件-->
+    <p>
+        在 Vue 里，一个组件本质上是一个拥有预定义选项的一个 Vue 实例，在 Vue 中注册组件很简单： // 定义名为 todo-item 的新组件 Vue.component('todo-item', { template: '
+        <li>这是个待办项</li>' })
     </p>
-  </div>
 
-  <div id="app-4">
-    <p v-if="seen">到底看不看得到我</p>
-  </div>
+    <!--大型应用组件化结构-->
+    <p>
+        在一个大型应用中，有必要将整个应用程序划分为组件，以使开发可管理。在后续教程中我们将详述组件，不过这里有一个（假想的）使用了组件的应用模板是什么样的例子：
+        <div id="app">
+            <app-nav></app-nav>
+            <app-view>
+                <app-sidebar></app-sidebar>
+                <app-content></app-content>
+            </app-view>
+        </div>
+    </p>
 
-  <div id="app-5">
-    <ol>
-      <li v-for="todo in todos">
-        {{ todo.text }}
-      </li>
-      <li>app5.todos.push({text:'2017xin'})往列表中添加一个新的项</li>
-    </ol>
-  </div>
-
-  <!--处理用户输入-->
-  <div id="app-6">
-    <p>{{message}}</p>
-    <p>Vue 还提供了 v-model 指令，它能轻松实现表单输入和应用状态之间的双向绑定。</p>
-    <button v-on:click="reversemessage">逆向消息</button>
-  </div>
-
-  <!--双向数据绑定-->
-  <div id="app-7">
-    <p>{{message}}</p>
-    <input v-model="message">
-  </div>
-
-  <!--组件化-->
-  <p>Vue里，一个组件本质上是一个拥有预定义选项的一个Vue实例</p>
-  <div id="app-8">
-    <ol>
-      <!-- 现在我们为每个todo-item提供待办项对象    -->
-      <!-- 待办项对象是变量，即其内容可以是动态的 -->
-      <todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
-    </ol>
-  </div>
+    <!--20170618内容-->
+    <p>每个 Vue.js 应用都是通过构造函数 Vue 创建一个 Vue 的根实例 启动的：</p>
+    <div id="app-10">
+        <p>正常文字内容："{{message}}"</p>
+        <p>反向文字内容："{{fanxiangmessage}}"</p>
+    </div>
 
 </body>
 <script src="js/vue.js"></script>
 <script src="js/main.js"></script>
+
 </html>
